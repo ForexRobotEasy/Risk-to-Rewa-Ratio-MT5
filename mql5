@@ -1,0 +1,66 @@
+
+// Developer: Forex Robot Easy Team
+// Developer's Site: forexroboteasy.com
+
+// Risk to Reward Ratio MT5
+
+// Include necessary libraries
+#include <Trade\Trade.mqh>
+#include <Trade\PositionInfo.mqh>
+
+// Define function to calculate risk to reward ratio
+double CalculateRiskToRewardRatio(double entryPrice, double stopLossLevel, double takeProfitLevel)
+{
+    double potentialLoss = entryPrice - stopLossLevel;
+    double potentialProfit = takeProfitLevel - entryPrice;
+    
+    double riskToRewardRatio = potentialLoss / potentialProfit;
+    
+    return riskToRewardRatio;
+}
+
+// Define function to display calculated values
+void DisplayValues(double potentialLoss, double potentialProfit, double riskToRewardRatio)
+{
+    Print('Potential Loss in Pips: ', potentialLoss);
+    Print('Potential Profit in Pips: ', potentialProfit);
+    Print('Risk to Reward Ratio: ', riskToRewardRatio);
+}
+
+// Define function to handle user inputs and execute trades
+void HandleUserInputs()
+{
+    double entryPrice;
+    double stopLossLevel;
+    double takeProfitLevel;
+    
+    // Prompt user to enter trade details
+    Print('Enter Entry Price: ');
+    cin >> entryPrice;
+    
+    Print('Enter Stop Loss Level: ');
+    cin >> stopLossLevel;
+    
+    Print('Enter Take Profit Level: ');
+    cin >> takeProfitLevel;
+    
+    // Calculate risk to reward ratio
+    double riskToRewardRatio = CalculateRiskToRewardRatio(entryPrice, stopLossLevel, takeProfitLevel);
+    
+    // Calculate potential loss and profit in pips
+    double potentialLoss = entryPrice - stopLossLevel;
+    double potentialProfit = takeProfitLevel - entryPrice;
+    
+    // Display calculated values
+    DisplayValues(potentialLoss, potentialProfit, riskToRewardRatio);
+    
+    // Execute trades based on user inputs (implementation required)
+    // ...
+}
+
+// Define the entry point of the program
+void OnStart()
+{
+    // Handle user inputs and execute trades
+    HandleUserInputs();
+}
